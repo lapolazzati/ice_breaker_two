@@ -5,11 +5,11 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-NUBELA_KEY_LINK = os.getenv('NUBELA_KEY_LINK')
+NUBELA_KEY_LINK = os.getenv("NUBELA_KEY_LINK")
 
 
 def scrape_linkedin_profile(linkedin_profile_url: str):
-    """scrape infomration from LinkedIn profiles,
+    """scrape information from LinkedIn profiles,
     Manually scrape the information from the linkedin profile"""
     api_endpoint = "https://nubela.co/proxycurl/api/v2/linkedin"
     header_dic = {"Authorization": f'Bearer {os.environ.get("NUBELA_KEY_LINK")}'}
@@ -27,9 +27,5 @@ def scrape_linkedin_profile(linkedin_profile_url: str):
     if data.get("groups"):
         for group_dict in data.get("groups"):
             group_dict.pop("profile_pic_url")
-    
+
     return data
-
-
-
-
