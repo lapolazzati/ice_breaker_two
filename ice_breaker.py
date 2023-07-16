@@ -12,7 +12,7 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 if __name__ == "__main__":
     print("Hello Langchain")
 
-    linkedin_profile_url = linkedin_lookup_agent(name_of_person="Maria da Gloria Ponte Burlamaqui")
+    linkedin_profile_url = linkedin_lookup_agent(name_of_person="Lapo Lazzati Cloudwalk")
 
     # Changed to Python f-string syntax
     summary_template = """
