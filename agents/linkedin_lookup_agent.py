@@ -1,13 +1,7 @@
 from langchain import PromptTemplate
 from langchain.chat_models import ChatOpenAI
 from langchain.agents import initialize_agent, Tool, AgentType
-from langchain.serpapi import SerpAPIWrapper
-
-def get_profile_url(text: str) -> str:
-    """Searches for Linkedin Profile Page."""
-    search = SerpAPIWrapper()
-    res = search.run(f"{text}")
-    return res
+from tools import get_profile_url
 
 def linkedin_lookup_agent(name_of_person: str) -> str:
     llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
