@@ -1,10 +1,9 @@
 from langchain.utilities import SerpAPIWrapper
 from dotenv import load_dotenv
-import os 
+import os
 
 load_dotenv()
 serpapi_key = os.getenv("SERPAPI_API_KEY")
-
 
 
 class CustomSerpAPIWrapper(SerpAPIWrapper):

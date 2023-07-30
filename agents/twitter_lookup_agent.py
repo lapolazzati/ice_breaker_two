@@ -4,17 +4,17 @@ from langchain.agents import initialize_agent, Tool, AgentType
 from tools import get_profile_url
 
 
-def linkedin_lookup_agent(name_of_person: str) -> str:
+def lookup(name_of_person: str) -> str:
     llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
 
     # Define the template as a normal string with a placeholder for the variable
-    template = "given the full name {name_of_person} I want you to get it me a link to their Linkedin profile page. Your answer should contain only a URL"
+    template = "given the full name {name_of_person} I want you to get it me a link to their Twitter profile page. Your answer should contain only the person username"
 
     tools_for_agents = [
         Tool(
-            name="Crawl Google for a Linkedin profile page",
+            name="Crawl Google for a Twitter profile page, return username",
             func=get_profile_url,
-            description="useful for when you need to find a linkedin profile",
+            description="useful for when you need to find a twitter profile",
         )
     ]
     agent = initialize_agent(
@@ -29,7 +29,5 @@ def linkedin_lookup_agent(name_of_person: str) -> str:
     )
 
     # Format the prompt with the actual input and run the agent
-    linkedin_profile_url = agent.run(
-        prompt_template.format(name_of_person=name_of_person)
-    )
-    return linkedin_profile_url
+    twitter_username = agent.run(prompt_template.format(name_of_person=name_of_person))
+    return "twitter_username"

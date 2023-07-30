@@ -29,4 +29,3 @@ def scrape_linkedin_profile(linkedin_profile_url: str):
             group_dict.pop("profile_pic_url")
 
     return data
-
